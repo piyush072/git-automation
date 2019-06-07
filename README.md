@@ -3,6 +3,7 @@
 ```bash
 git clone https://github.com/piyush072/git-automation
 cd git-automation
+pip install -r requirements.txt
 source commands.sh
 create repository_name public #to create a public repository
 create repository_name private #to create a private repository
