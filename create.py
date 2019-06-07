@@ -3,39 +3,47 @@ import sys
 import time
 import pyautogui
 
-browser = webdriver.Chrome(executable_path="/home/piyush/Downloads/chromedriver_linux64/chromedriver")
+CHROME_DRIVER="/path/to/chrome/driver"
+browser = webdriver.Chrome(executable_path=CHROME_DRIVER)
 
-URL = "https://github.com/login"
+username = "test"
+password = "test"
 
-browser.get(URL)
+def create():
 
-username = "usermame"
-password = "password"
+    URL = "https://github.com/login"
 
-user = browser.find_element_by_xpath("//input[@id='login_field']")
-user.send_keys(username)
+    browser.get(URL)
 
-passwd = browser.find_element_by_xpath("//input[@id='password']")
-passwd.send_keys(password)
 
-browser.find_element_by_xpath("//input[@type='submit']").click()
+    user = browser.find_element_by_xpath("//input[@id='login_field']")
+    user.send_keys(username)
 
-print("login successful")
+    passwd = browser.find_element_by_xpath("//input[@id='password']")
+    passwd.send_keys(password)
 
-URL = "https://github.com/new"
-browser.get(URL)
+    browser.find_element_by_xpath("//input[@type='submit']").click()
 
-print("about to create new repository")
+    print("login successful")
 
-browser.find_element_by_xpath("//input[@id='repository_visibility_private']").click()
+    URL = "https://github.com/new"
+    browser.get(URL)
 
-new_repo = browser.find_element_by_xpath("//input[@id='repository_name']")
-new_repo.send_keys(sys.argv[1])
+    print("about to create new repository")
 
-time.sleep(2)
+    browser.find_element_by_xpath("//input[@id='repository_visibility_private']").click()
 
-pyautogui.press('enter')
+    new_repo = browser.find_element_by_xpath("//input[@id='repository_name']")
+    new_repo.send_keys(sys.argv[1])
 
-print("New repository created")
+    time.sleep(2)
 
-browser.close()
+    pyautogui.press('enter')
+
+    print("New repository created")
+
+    browser.close()
+
+
+if __name__ == "__main__":
+    create()
