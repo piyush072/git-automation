@@ -31,7 +31,8 @@ def create():
 
     print("about to create new repository")
 
-    browser.find_element_by_xpath("//input[@id='repository_visibility_private']").click()
+    if(sys.argv[2]=='private'):
+        browser.find_element_by_xpath("//input[@id='repository_visibility_private']").click()
 
     new_repo = browser.find_element_by_xpath("//input[@id='repository_name']")
     new_repo.send_keys(sys.argv[1])

@@ -2,7 +2,7 @@
 
 function create(){
 
-  python create.py $1
+  python create.py $1 $2
   username="test"
   password="test"
   cd
