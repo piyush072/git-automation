@@ -2,8 +2,13 @@ from selenium import webdriver
 import sys
 import time
 import pyautogui
+from pyvirtualdisplay import Display
 
 CHROME_DRIVER="/path/to/chrome/driver"
+
+display = Display(visible=0, size=(800, 600))
+display.start()
+
 browser = webdriver.Chrome(executable_path=CHROME_DRIVER)
 
 username = "test"
@@ -44,6 +49,9 @@ def create():
     print("New repository created")
 
     browser.close()
+
+    display.stop()
+
 
 
 if __name__ == "__main__":
